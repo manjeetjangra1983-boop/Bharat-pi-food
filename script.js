@@ -1,45 +1,30 @@
+let cart = [];
+let total = 0;
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bharat Pi Food</title>
-<link rel="stylesheet" href="style.css">
-</head>
+function addToCart(item, price) {
+    cart.push({ item, price });
+    total += price;
 
-<body>
+    const cartList = document.getElementById("cart");
+    const li = document.createElement("li");
+    li.textContent = `${item} - ${price} Pi`;
+    cartList.appendChild(li);
 
-<h1>🍛 Bharat Pi Food</h1>
-<p>Order delicious food with Pi</p>
+    document.getElementById("total").textContent = total.toFixed(2);
+}
 
-<div class="food-card">
-    <h2>Veg Thali</h2>
-    <p>Price: 1 Pi</p>
-    <button onclick="addToCart('Veg Thali',1)">Add to Cart</button>
-</div>
+function checkout() {
+    if (cart.length === 0) {
+        alert("Please add food to your cart first.");
+        return;
+    }
 
-<div class="food-card">
-    <h2>Pizza</h2>
-    <p>Price: 2 Pi</p>
-    <button onclick="addToCart('Pizza',2)">Add to Cart</button>
-</div>
+    alert("Demo Checkout\nTotal: " + total.toFixed(2) + " Pi");
 
-<div class="food-card">
-    <h2>Burger</h2>
-    <p>Price: 1.5 Pi</p>
-    <button onclick="addToCart('Burger',1.5)">Add to Cart</button>
-</div>
+    // Pi SDK payment बाद में यहाँ जोड़ा जाएगा
 
-<h2>Cart</h2>
-
-<ul id="cart"></ul>
-
-<h3>Total Pi: <span id="total">0</span></h3>
-
-<button onclick="checkout()">Pay with Pi</button>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+    cart = [];
+    total = 0;
+    document.getElementById("cart").innerHTML = "";
+    document.getElementById("total").textContent = "0";
+}
