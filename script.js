@@ -1,3 +1,45 @@
-function orderFood() {
-    alert("Welcome to Bharat Pi Food!");
-}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bharat Pi Food</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>🍛 Bharat Pi Food</h1>
+<p>Order delicious food with Pi</p>
+
+<div class="food-card">
+    <h2>Veg Thali</h2>
+    <p>Price: 1 Pi</p>
+    <button onclick="addToCart('Veg Thali',1)">Add to Cart</button>
+</div>
+
+<div class="food-card">
+    <h2>Pizza</h2>
+    <p>Price: 2 Pi</p>
+    <button onclick="addToCart('Pizza',2)">Add to Cart</button>
+</div>
+
+<div class="food-card">
+    <h2>Burger</h2>
+    <p>Price: 1.5 Pi</p>
+    <button onclick="addToCart('Burger',1.5)">Add to Cart</button>
+</div>
+
+<h2>Cart</h2>
+
+<ul id="cart"></ul>
+
+<h3>Total Pi: <span id="total">0</span></h3>
+
+<button onclick="checkout()">Pay with Pi</button>
+
+<script src="script.js"></script>
+
+</body>
+</html>
