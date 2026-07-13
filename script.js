@@ -18,13 +18,28 @@ function checkout() {
         alert("Please add food to your cart first.");
         return;
     }
+  Pi.createPayment({
+    amount: total,
+    memo: "Order from Bharat Pi Food",
+    metadata: { orderId: "12345" },
+  }, {
+    onReadyForServerApproval: function(paymentId) {
+      // Server Approval
+    },
+    onReadyForServerCompletion: function(paymentId, txid) {
+      cart = [];
+      total = 0;
+      document.getElementById("cart").innerHTML = "";
+      document.getElementById("total").textContent = "Total Pi: 0.00";
+      alert("Payment successful!");
+    },
+    onCancel: function(paymentId) {
+      alert("Payment canceled");
+    },
+    onError: function(error, payment) {
+      alert("Payment error: " + error.message);
+    }
+  });
 
-    alert("Demo Checkout\nTotal: " + total.toFixed(2) + " Pi");
-
-    // Pi SDK payment बाद में यहाँ जोड़ा जाएगा
-
-    cart = [];
-    total = 0;
-    document.getElementById("cart").innerHTML = "";
-    document.getElementById("total").textContent = "0";
+    
 }
