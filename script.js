@@ -1,3 +1,12 @@
+const Pi = window.Pi;
+
+try {
+    Pi.init({ version: "2.0", sandbox: true });
+    console.log("Pi SDK successfully initialized!");
+} catch (error) {
+    console.error("Pi SDK load nahi ho paya:", error);
+}
+
 let cart = [];
 let total = 0;
 
